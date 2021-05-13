@@ -1,0 +1,115 @@
+﻿@model PagedList.Core.IPagedList<ProjectMedium.Models.DataAccess.Entitites.Note>
+
+
+@{
+    ViewData["Title"] = "NotListesi";
+}
+
+<div class="row">
+
+    <div class="col-1"></div>
+    <div class="col-10">
+        <h1>Not Index Sayfası</h1>
+        <p>
+            <a asp-action="Create">Yeni Yazı Ekle</a>
+        </p>
+
+        @using (Html.BeginForm("Index", "Notes", FormMethod.Get))
+        {
+
+            <p>
+                Filtre Giriniz:@Html.TextBox("searchString", ViewBag.currentFilter as string)
+                <input type="submit" value="Search" />
+            </p>
+        }
+        <div>
+            <div class="row">
+                <div class="col-5">
+
+                    <div class="navbar">
+
+
+                        <span>
+
+                            @Html.ActionLink("Başlık İsmine Göre Sıralama", "Index", new { sortOrder = ViewBag.TitleNameSortOrder })
+                        </span>
+                        <span class="float-end">
+
+                            @Html.ActionLink("Tarihe Göre Sırala", "Index", new { sortOrder = ViewBag.CreatedDateSortOrder })
+                        </span>
+                    </div>
+
+                    @foreach (var item in Model)
+                    {
+
+
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="modal-footerbydem card-title bg-darkbydem fw-bolder text-center">
+
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </div>
+                                <div class="modal-contentbydem">
+                                    @Html.DisplayFor(modelItem => item.Content)
+
+                                </div>
+                                <div class="card-footer">
+                                    <span class="card-linkbyddemir">Okunma Sayısı: @Html.DisplayFor(modelItem => item.ReadingCount)</span>
+                                    <span class="card-linkbyddemir">Tahmini Okum Süresi: @Html.DisplayFor(modelItem => item.ReadingTime)</span>
+
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                @Html.DisplayFor(modelItem => item.User.Photo)
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+
+                <div class="col-3">
+                </div>
+
+                <div class="col-4">
+                    <div class="btn-group">
+
+
+                        @foreach (var item in Model)
+                        {
+
+                            <div class="row m-lg-3">
+                                <button type="button" class="btn btn-outline-dark  my-lg-1">@Html.DisplayFor(modelItem => item.User.FirstName)</button>
+
+                                <a>
+                                    @Html.DisplayFor(modelItem => item.User.FirstName)
+                                </a>
+
+
+                                <button>
+                                    @Html.DisplayFor(modelItem => item.NoteID)
+                                </button>
+                                <a asp-action="Index" asp-route-id="@item.NoteTopics"> @Html.DisplayFor(modelItem => item.NoteTopics)</a>
+
+
+                            </div>
+
+
+                        }
+
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        Sayfa @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+        <pager class="pager-container"
+               list="@Model"
+               options="@PagedListRenderOptions.Bootstrap4Full"
+               action="Index" asp-controller="Note"></pager>
+    </div>
+    <div class="col-1"></div>
+</div>

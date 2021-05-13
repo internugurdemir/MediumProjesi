@@ -1,0 +1,66 @@
+﻿@model ProjectMedium.Models.DataAccess.Entitites.Note
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="text-center">
+
+    <h1>Not Edit Sayfası</h1>
+
+
+    <h4>Note</h4>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="NoteID" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="height:400px; width:100%">
+                <label asp-for="Content" class="control-label"></label>
+                <textarea id="summernote" style="height:400px;" asp-for="Content" class="form-control"></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UserID" class="control-label"></label>
+                <select asp-for="UserID" class="form-control" asp-items="ViewBag.UserID"></select>
+                <span asp-validation-for="UserID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+  
+            <div class="form-group">
+            </div>
+
+            <div class="progress-barforinput">
+                <input type="submit" value="Save" class="btn" />
+            </div>
+
+
+
+
+        </form>
+    </div>
+    <div class="col-md-2"></div>
+
+</div>
+
+<div class="progress-bar">
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "🤗🤗Welcome🤗🤗";
+}
+
+@*<form asp-action="VeriAl" asp-controller="Home" method="post">
+        <input type="text" name="txtValue1" /><br />
+        <input type="text" name="txtValue2" /><br />
+        <input type="text" name="txtValue3" /><br />
+        <input type="text" name="txtValue4" /><br />
+        <input type="text" name="txtValue5" /><br />
+        <button>Gönder</button>
+    </form>*@
+
+
+
+<div>
+    <div>
+        <div class="girisdiv">
+            <div class=" row">
+                <span typeof="hidden" ></span>
+                <div class="col-2"> </div>
+                <div class="col-5" id="gdiv-col-5">
+                    <div class=" row gdivh2"><h2>Where good ideas find you</h2></div>
+                    <div class=" row gdivspc"></div>
+                    <div class=" row"><h3 class="gdivh3">Read and share new perspectives on just about any topic. Everyone’s welcome. <a asp-area="" asp-controller="Home" asp-action="OurStory">Learn more.</a></h3></div>
+                    <div class="row text-center"><a asp-area="" asp-controller="Home" asp-action="OurStory" class="gdivh3 gdivbutton">Get Started</a></div>
+                </div>
+                <div class="col-3 miro"> <img src="https://miro.medium.com/max/578/1*qcAZgT4Sk37MPSTGBH2KUw.png" />   </div>
+                <div class="col-2">  </div>
+            </div>
+        </div>
+        <div class="gdivspc">
+            <div class="container">
+                <div class=" row">
+                    <div class="col-12">
+                        <svg width="30" height="30" viewBox="0 0 20 30" fill="none">
+                            <circle cx="15" cy="15" r="9.5" stroke="#f00"></circle>
+                            <path d="M5.46 18.36l4.47-4.48M9.97 13.87l3.67 3.66M13.67 17.53l5.1-5.09M16.62 11.6h3M19.62 11.6v3" stroke="#f00"></path>
+                        </svg>Trending on Medium
+
+
+
+                        @await Component.InvokeAsync("TrendedNotes")
+
+
+                    </div>
+                    <div class="gdivspc">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+
+    <div class="gdivspc">        </div>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-5">
+
+            @await Component.InvokeAsync("NoteList")
+        </div>
+
+        <div class="col-3">
+          
+            @await Component.InvokeAsync("TopicList")
+
+        </div>
+    </div>
+    <div class="col-2"></div>
+</div>
+
+

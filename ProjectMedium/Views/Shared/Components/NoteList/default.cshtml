@@ -1,0 +1,36 @@
+﻿@model List<Note>
+
+
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col-12">
+            @if (true)
+            {
+                <div class="modal-footerbydem">
+                    <a class="btn btn-outline-dark" asp-area="" asp-controller="Login" asp-action="ToTheLogin">@Html.Raw(item.Title) </a>
+                    <img id="imagesavetoshow" style="height:60px; width:60px" src="/Users/ShowImage/@item.UserID" />
+
+                </div>
+            }
+            else
+            {
+                <div class="modal-footerbydem">
+                    <a class="btn btn-outline-dark" asp-area="" asp-controller="Notes" asp-action="Index">@Html.Raw(item.Title) </a>
+                    <img id="imagesavetoshow" style="height:60px; width:60px" src="/Users/ShowImage/@item.UserID" />
+
+                </div>
+            }
+
+            <div class="modal-contentbydem lg135 tab-content" style=" overflow:auto">
+                <p id="toggle">@Html.Raw(@item.Content)</p>
+            </div>
+            <div class="card-footer">
+                <span class="card-linkbyddemir">@item.ReadingCount times readed</span>
+                <span class="card-linkbyddemir right-auto">@item.ReadingTime min</span>
+
+            </div>
+        </div>
+
+    </div>
+}

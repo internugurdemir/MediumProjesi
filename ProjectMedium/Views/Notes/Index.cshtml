@@ -1,0 +1,74 @@
+﻿@model IEnumerable<ProjectMedium.Models.DataAccess.Entitites.Note>
+<div class="row">
+
+    <div class="col-1"></div>
+
+    <div class="col-8">
+        <p>
+            <a asp-action="Create">Yeni Not Ekle</a>
+
+        </p>
+        <div class="navbar">
+
+
+            @*<span>
+
+                @Html.ActionLink("Başlık İsmine Göre Sıralama", "Index", new { sortOrder = ViewBag.TitleNameSortOrder })
+            </span>
+            <span class="float-end">
+
+                @Html.ActionLink("Tarihe Göre Sırala", "Index", new { sortOrder = ViewBag.CreatedDateSortOrder })
+            </span>*@
+        </div>
+
+        @foreach (var item in Model)
+        {
+
+
+            <div class="row">
+                <div class="col-8">
+                    <div class="modal-footerbydem card-title bg-darkbydem fw-bolder text-center" style="margin-top:30px">
+
+
+                        <a class="cardtitlea" asp-action="ReadNote" asp-route-id="@item.NoteID">@item.Title</a>
+                        <div class="cardedd">
+
+                            @if (item.UserID == item.User.UserID)
+                            {
+                                <div>
+
+                                    <a asp-action="Edit" asp-route-id="@item.NoteID">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.NoteID">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.NoteID">Delete</a>
+                                </div>
+                            }
+                                </div>
+
+                        </div>
+
+
+                        <div class="modal-contentbydem lg135 tab-content" style="height:110px; overflow:auto">
+                            <p id="toggle">@Html.Raw(@item.Content)</p>
+
+
+                        </div>
+                        <div class="card-footer" style="margin-bottom:30px">
+                            <span class="card-linkbyddemir">Okunma Sayısı: @Html.DisplayFor(modelItem => item.ReadingCount)</span>
+                            <span class="card-linkbyddemir">Tahmini Okum Süresi: @Html.DisplayFor(modelItem => item.ReadingTime)</span>
+                        </div>
+                    </div>
+                <div class="col-4">
+                    <img id="imagesavetoshow" style="height:60px; width:60px" src="/Users/ShowImage/@item.UserID" />
+
+                </div>
+            </div>
+
+        }
+
+    </div>
+
+    <div class="col-2"></div>
+    <div class="col-1"></div>
+</div>
+
+

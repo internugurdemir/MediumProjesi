@@ -1,0 +1,68 @@
+﻿@model List<Note>
+       
+
+@{int forthelist = 0; }
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+    <div class="col-4 card border-3 px-2">
+        @if (Context.Request.Cookies["EMail"] == "" || Context.Request.Cookies["EMail"] == null)
+        {
+            <div class="row">
+                <div class="col-6 flex-fill card justify-content-center">
+                    <a class="btn btn-outline-dark" asp-area="" asp-controller="Login" asp-action="ToTheLogin">@Html.Raw(item.Title)</a>
+                </div>
+                <div class="col-3 flex-fill card text-center pt-3">
+                    <h3>
+                        #    @(forthelist = forthelist + 1)
+                    </h3>
+                </div>
+                <div class="col-3 flex-fill card justify-content-center">
+                    <img id="imagesavetoshow" style="height:60px; width:60px" src="/Users/ShowImage/@item.UserID" />
+                </div>
+            </div>
+
+
+            <div class="modal-contentbydem lg135 tab-content" style="overflow:auto">
+                <p id="toggle">@Html.Raw(@item.Content)</p>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-6 flex-fill card justify-content-center">
+                    <a class="btn btn-outline-dark" asp-area="" asp-controller="Notes" asp-action="Index">@Html.Raw(item.Title)</a>
+                </div>
+                <div class="col-3 flex-fill card text-center pt-3">
+                    <h3>
+                        #    @(forthelist = forthelist + 1)
+                    </h3>
+                </div>
+                <div class="col-3 flex-fill card justify-content-center">
+                    <img id="imagesavetoshow" style="height:60px; width:60px" src="/Users/ShowImage/@item.UserID" />
+                </div>
+            </div>
+
+
+            <div class="modal-contentbydem lg135 tab-content" style="overflow:auto">
+                <p id="toggle">@Html.Raw(@item.Content)</p>
+            </div>
+        }
+
+        <div class="card-footer">
+            <span class="card-linkbyddemir">@item.ReadingCount times readed</span>
+            <span class="card-linkbyddemir right-auto">@item.ReadingTime min</span>
+
+        </div>
+    </div>
+
+
+
+
+
+    }
+
+
+
+</div>

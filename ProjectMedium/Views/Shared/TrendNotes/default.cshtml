@@ -1,0 +1,31 @@
+﻿@model List<Note>
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-4 card">
+            <div class="row">
+                <div class="col-6 flex-fill card">
+                    01 Sıra
+                </div>
+                <div class="col-6 flex-fill card">
+                    @item.Photo
+                </div>
+            </div>
+
+            <div class="row  trendheight">
+
+                @item.Content
+            </div>
+            <div class="card-footer">
+                <span class="card-linkbyddemir">@item.ReadingCount</span>
+                <span class="card-linkbyddemir">@item.ReadingTime</span>
+
+            </div>
+        </div>
+
+
+    }
+
+</div>

@@ -1,0 +1,22 @@
+﻿@model ProjectMedium.ViewModels.TopicsforNotesViewModel;
+
+@{Layout = "_Layout";
+}
+<form asp-action="AddTopic">
+        <button class="btn btn-default dropdown-toggle" type="button"
+                id="dropdownMenu1" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="true">
+            <i class="glyphicon glyphicon-tasks"><b> Topics</b> </i>
+        </button>
+        <ul class="dropdown-menu checkbox-menu allow-focus" style="width:300px;height:300px;overflow-y:scroll;position:absolute;" aria-labelledby="dropdownMenu1">
+            @for (int i = 0; i < Model.topicsfornote.Count; i++)
+            {
+                <li>
+                    @Html.CheckBoxFor(model => model.topicsfornote[i].IsSelected)
+                    <label>@Model.topicsfornote[i].TopicName</label>
+                    @Html.HiddenFor(model => model.topicsfornote[i].TopicID)
+                </li>
+            }
+        </ul>
+        <input type="submit" value="AddTopic" />
+</form>

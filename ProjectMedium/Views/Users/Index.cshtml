@@ -1,0 +1,130 @@
+﻿@model PagedList.Core.IPagedList<ProjectMedium.Models.DataAccess.Entitites.User>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="row">
+
+    <div class="col-1"></div>
+    <div class="col-10">
+        <h1>Kullanıcı Index Sayfası</h1>
+
+        <p>
+            <a asp-action="Create">Yeni Kullanıcı Ekle</a>
+
+        </p>
+        @using (Html.BeginForm("Index", "Users", FormMethod.Get))
+        {
+
+
+            <p>
+                Filtre Giriniz:@Html.TextBox("searchString", ViewBag.currentFilter as string)
+                <input type="submit" value="Search" />
+            </p>
+        }
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.UserName)*@
+                        @Html.ActionLink("Kullanıcı Adı", "Index", new { sortOrder = ViewBag.UserNameSortOrder })
+
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.FirstName)*@
+                        @Html.ActionLink("Adı", "Index", new { sortOrder = ViewBag.FirstNameSortOrder })
+
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.LastName)*@
+                        @Html.ActionLink("Soyadı", "Index", new { sortOrder = ViewBag.LastNameSortOrder })
+
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().Email)
+                    </th>
+
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.Bio)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Photo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Connections)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UserRole)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatedDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IsActive)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedDate)
+                        </th>*@
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.Bio)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Photo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Connections)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserRole)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreatedDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IsActive)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ModifiedDate)
+                            </td>*@
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.UserID">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.UserID">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.UserID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+        Sayfa @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+        <pager class="pager-container"
+               list="@Model"
+               options="@PagedListRenderOptions.Bootstrap4Full"
+               action="Index" asp-controller="User"></pager>
+    </div>
+    <div class="col-1"></div>
+    </div>

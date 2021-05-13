@@ -1,0 +1,33 @@
+﻿@model List<Topic>
+
+<div class="row">
+    
+    @foreach (var item in Model)
+    {
+    <div class="card card-body">
+        @if (Context.Request.Cookies["EMail"] == "" || Context.Request.Cookies["EMail"] == null)
+        {
+            <a type="button" class="btn btn-outline-dark col-3" asp-area="" asp-controller="Login" asp-action="ToTheLogin">@item.TopicName</a>
+
+            <img src="@item.Photo" alt="@item.TopicName">
+
+            <div class="footer">
+                <a type="button" class="btn btn-outline-dark col-3" asp-area="" asp-controller="Login" asp-action="ToTheLogin">Follow</a>
+            </div>
+        }
+        else
+        {
+            <a type="button" class="btn btn-outline-dark col-3" asp-area="" asp-controller="Topics" asp-action="Index">@item.TopicName</a>
+
+            @*<img src="@item.Photo" alt="@item.TopicName">*@
+            <img id="imagesavetoshow" style="height:60px; width:60px" src="/Users/ShowImage/@item.TopicID" />
+
+                <a type="button" class="btn btn-outline-dark col-3" asp-area="" asp-controller="Topics" asp-action="Index">Follow</a>
+            <div class="footer">
+            </div>
+        }
+
+    </div>
+    }
+
+</div>

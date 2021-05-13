@@ -1,0 +1,65 @@
+﻿@model PagedList.Core.IPagedList<ProjectMedium.Models.DataAccess.Entitites.Topic>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+
+    <div class="col-1"></div>
+    <div class="col-10">
+        <h1>Konu Index Sayfası</h1>
+
+
+        <p>
+            <a asp-action="Create">Yeni Konu Ekle</a>
+        </p>
+
+        @using (Html.BeginForm("Index", "Topics", FormMethod.Get))
+        {
+
+            <p>
+                Filtre Giriniz:@Html.TextBox("searchString", ViewBag.currentFilter as string)
+                <input type="submit" value="Search" />
+            </p>
+        }
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.TopicNameSortOrder })
+                    </th>
+                    <th>Yazılmış İçerik Sayısı</th>
+                    <th>Yazılmış İçeriklerin Okunma Sayısı</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>                            @Html.DisplayFor(modelItem => item.TopicName)                        </td>
+                        <td>                            Yazılmış İçerik Sayısı                        </td>
+                        <td>                            Yazılmış İçeriklerin Okunma Sayısı                        </td>
+                        <td>
+                                <a asp-action="Edit" asp-route-id="@item.TopicID">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.TopicID">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.TopicID">Delete</a>
+                            </td>
+                    </tr>
+                }
+            </tbody>
+
+
+        </table>
+
+
+        Sayfa @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+        <pager class="pager-container"
+               list="@Model"
+               options="@PagedListRenderOptions.Bootstrap4Full"
+               action="Index" asp-controller="Topics"></pager>
+
+
+    </div><div class="col-1"></div>
+</div>

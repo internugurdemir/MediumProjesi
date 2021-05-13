@@ -1,0 +1,27 @@
+﻿@model ProjectMedium.Models.DataAccess.Entitites.Topic
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Konu Silme Sayfası</h1>
+
+<h3>Silmek istediğinize emin misiniz?</h3>
+<div>
+    <h4>Topic</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TopicName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TopicName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="TopicID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

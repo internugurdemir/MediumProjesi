@@ -1,0 +1,110 @@
+﻿Asp.NET-Asp.NET Core-Asp.NET Core 5.0
+Web Mantığı
+http Protokolü
+Web Stratejisi
+Web Geliştirme Modelleri
+MVC(Model View Conttroller)
+
+Razor
+Html Helper%Tag Helper
+Model Binding
+Kullanıcıdan Veri Alma Yöntemleri
+Validation
+Layout
+Modüler Tasarım Yapılanması
+Route Yapılanması
+Asp.Net Core Özellikleri
+	Dependency İnjection
+Areas
+ 
+
+
+Asp.NET-Asp.NET Core-Asp.NET Core 5.0
+Microsoft Tarafından geliştirilmiş Web Uygulama Geliştirme Mimarisidir.Yazılım Dili Değil
+Uygulama yapamayız geliştirme olur. C# üzerine kurulu
+Asp.NET CORE	
+Microsoft Tarafından geliştirilmiş Web Uygulama Geliştirme Mimarisidir.Yazılım Dili Değil OPEN SOURCE
+FARKLARI=>
+ 
+Performans
+Cross Platform
+Kolay Bakım
+Modüler Altyapı(Araba gibi(Far+teker+vites gibi şeylerin bozukluğu bütünü etkilemez))
+Dependency Injection
+Razor Pages
+Asenkron işlemler
+
+
+Bir Takım Bilgiler
+Tarayıcı aracılığıyla girmek istediği hepsiburada.com
+User client(akıllı pil-istemci-istek yapan şey-kumanda) kullanarak girer. Hostinge istek-request iletir.
+Hosting respone verir.
+Hangi ipye domaine request yapıldı
+İpleri anlamlı isimlendirmelerle domain kavramını oluşturduk
+Hepsiburada.com web uygulaması yer yüzünde 
+
+GET	POST	PUT	DELETE
+Sunucu verileri Listelemek-elde etmek için kullanılır.
+Select	Sunucuya veri Göndermek-eklemek için
+Insert	Var olan veriyi değiştirmek-ggüncellemek
+Kısmi güncelleme ise PATCH isteği
+Update	Veriyi silmek
+
+Delete
+
+https://www.youtube.com/watch?v=BnlE5AUMSfw&list=PLQVXoXFVVtp33KHoTkWklAo72l5bcjPVL&index=9		Bu dahil
+https://www.youtube.com/watch?v=wAHXOaIHeWA&list=PLQVXoXFVVtp33KHoTkWklAo72l5bcjPVL&index=11    Bu da dahi yaz
+
+
+
+
+MVC(MODEL VIEW CONTROLLER)
+	Birbirinden bağımsız üç katmanı esas alan mimari
+	Design patternları kullanır
+	
+	MODEL		(EF,Asp.NET CORE)
+		işlenecek veriyi temsil eder.
+		Veritabanı işlemleri
+	VIEW	(HTML-CSS-JS-RAZOR)
+		istek neticesinde elde edilen görüntü
+
+	CONTROLLER
+		Gelen requestleri(istekleri) karşılayacak ve request içeriğine göre gerekli model
+
+
+
+		User->Controller->Model(data burada gönderiyor)->controller(datayı aldı)->
+ 
+DTO(DATA TRANSFER OBJECT)
+Bir davranışı olmayan,uygulamanın çeşitli yerlerinde veri 
+	iletimi için kullanılan, veritabanındaki herhangi bir 
+	verirnin transfer nesnesidir
+
+Back End de veri taşıma için
+Salt veri
+Fonksiyon yok sadece transfer
+
+
+
+VIEW MODEL
+Bir davranışı olmayan,uygulamanın çeşitli yerlerinde veri iletimi için kullanılan, veritabanındaki herhangi bir verirnin transfer nesnesidir
+
+Verinin view’e uygun beklediği şekilde tasarlanmış modeli
+1 veya 1+ DTO
+Daha karmaşık
+ 
+
+
+
+
+ MVC DESIGN PATTERN:
+	Gelen isteği karşılayan Controller var
+	Controoller ihtiyaç için Model'a gidiyor ilgili veriyi alıyor
+		sonra aldığı veriyi görselleştirme çalışması varsa makyajlı halini tedarik
+		tekrarda requesti yapan clienta response ediyor
+
+
+
+Startup ta ne nedir=> yazıldı;Text için id=001;
+Controller daa ne nedir=> yazıldı;Text için id=002;
+appsettings.json =>

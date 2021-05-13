@@ -1,0 +1,63 @@
+﻿
+@{
+    Layout = "_Layout";
+}
+
+
+
+
+<link href="~/CssByDem/CssMainPage.css" rel="stylesheet" />
+<link href="~/CssByDem/bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="~/Login_v6/vendor/animate/animate.css">
+<link rel="stylesheet" type="text/css" href="~/Login_v6/vendor/css-hamburgers/hamburgers.min.css">
+<link rel="stylesheet" type="text/css" href="~/Login_v6/vendor/animsition/css/animsition.min.css">
+<link rel="stylesheet" type="text/css" href="~/Login_v6/vendor/select2/select2.min.css">
+
+
+<link rel="stylesheet" type="text/css" href="~/Login_v6/vendor/daterangepicker/daterangepicker.css">
+<link rel="stylesheet" type="text/css" href="~/Login_v6/css/util.css">
+
+
+<link rel="stylesheet" type="text/css" href="~/Login_v6/css/main.css">
+
+
+<div class="wrapperbydem fadeInDownbydem">
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100bydemir">
+                <form class="login100-form validate-form" asp-action="ToTheLogin" asp-controller="Login" method="post">
+                    <span class="login100-form-title p-b-30">
+                        YOU DO NOT HAVE PERMISSION TO ACCESS YOU MUST SIGN UP
+
+                    </span>
+                    <span class="login100-form-avatar">
+                        <img src="~/Login_v6/images/Locked.png" alt="AVATAR" />
+                    </span>
+
+
+                    <div class="container-login100-form-btnbydem">
+                        <a class=" buttontrybydemfortothelogin btn-outline-primary" asp-controller="Login" asp-action="Index">Sign In</a>
+
+                    </div>
+
+                    <ul class="login-more p-t-19">
+                        <li>
+                            <span class="txt1">
+                                Don’t have an account?
+                            </span>
+
+                            <a class="txt2" asp-controller="Users" asp-action="Create">Register</a>
+                            @* <a asp-controller="Users" asp-action="Create" class="txt2">>Get Started</a>*@
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<link href="~/CssByDem/bootstrap.css" rel="stylesheet" />
+<script src="~/Login_v6/js/main.js"></script>

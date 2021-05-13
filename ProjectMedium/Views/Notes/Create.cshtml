@@ -1,0 +1,63 @@
+﻿@model ProjectMedium.Models.DataAccess.Entitites.Note
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+
+<div class="row">
+
+    <div class="col-1"></div>
+    <div class="col-10 text-center">
+        <h1>Note Adding Page</h1>
+
+
+        <h4>Note</h4>
+        <hr />
+        <div class="row">
+
+            <div class="col-md-2"></div>
+            <div class="col-md-8 justify-content-center">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label"></label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Content" class="control-label"></label>
+                        <textarea id="summernote" style="height:300px;" asp-for="Content" class="form-control">
+                        </textarea>
+                        <span asp-validation-for="Content" class="text-danger"></span>
+                    </div>
+                  
+
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                        </label>
+                    </div>
+            
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+
+        </div>
+
+        <div class="m-b-50">
+            <a asp-action="Index">Back to List</a>
+        </div>
+
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
+    </div>
+    <div class="col-1"></div>
+</div>
+
